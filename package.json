@@ -1,0 +1,27 @@
+{
+  "name": "sarih",
+  "version": "0.0.1",
+  "description": "Sarih is for college students who wants to express there feelings and thoughts to their colleges without show thier name or identity .",
+  "main": "app.js",
+  "engines": {
+    "node": "7.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Sarih",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.3",
+    "expo-server-sdk": "^2.3.1",
+    "express": "^4.15.2",
+    "express-fileupload": "^0.1.3",
+    "jsonwebtoken": "^7.3.0",
+    "moment": "^2.18.1",
+    "mongoose": "^4.9.1",
+    "multer": "^1.3.0"
+  }
+}
