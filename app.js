@@ -7,7 +7,7 @@ var bodyParser  = require('body-parser');
 var jwt    = require('jsonwebtoken');
 var bcrypt = require('bcrypt'); var salt = 10 ;
 var moment = require('moment');
-var port = process.env.port || 8080 ;
+var port = process.env.port || 5000 ;
 const fileUpload = require('express-fileupload');
 
 var Expo = require('expo-server-sdk');
@@ -872,5 +872,5 @@ app.get('*',function (req,res) {
 
 })
 app.listen(port, ()=>{
-	console.log('server is listening on port 8080')
+	console.log('server is listening on port 5000')
 }) ;
