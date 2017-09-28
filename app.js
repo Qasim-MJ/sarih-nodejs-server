@@ -7,7 +7,7 @@ var bodyParser  = require('body-parser');
 var jwt    = require('jsonwebtoken');
 var bcrypt = require('bcrypt'); var salt = 10 ;
 var moment = require('moment');
-var port = process.env.port || 5000 ;
+var port = process.env.PORT || 5000 ;
 const fileUpload = require('express-fileupload');
 
 var Expo = require('expo-server-sdk');
