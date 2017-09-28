@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <link rel="stylesheet" type="text/css" href="css/style.css">
+              <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+                       <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-58539743-7', 'auto');
+  ga('send', 'pageview');
+</script>
+	<title>حساب جديد</title>
+</head>
+<body>
+    <div class="navbar navbar-default text-center">
+        <div class="navbar-header navbar-nav">
+              <a href="/" class="navbar-brand"><img class="logo" src="images/logowhite.png"></a>         
+        </div>
+    </div>
+    <section>
+        <div class="formdiv" id="formdiv">
+          <form id="signUpForm">
+            <label for="name">الاسم الثلاثي</label>
+              <input type="text" name="name" id="name" class="form-control" >
+            <label for="email">البريد الالكتروني</label>
+              <input type="email" name="email" id="email" class="form-control" >
+              <div class="row">
+                <div class="col-xs-6">
+                   <label for="passwordConfirm">تاكيد كلمة المرور</label>
+                     <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control" >
+                </div>
+                <div class="col-xs-6">
+                   <label for="password">كلمة المرور</label>
+                     <input type="password" name="password" id="password" class="form-control" >
+                </div>
+              </div>  
+              <div class="row">
+                <div class="col-xs-6">
+                   <label for="birthday">تاريخ الميلاد</label><br>
+                   <input type="Date" style="font-size: 10px;" name="birthday" id="birthday" class="form-control" >
+                </div>
+                <div class="col-xs-6">
+                   <label for="sex">الجنس</label><br>
+                     <input type="radio" name="sex" value="male" id="sex" > ذكر <br>
+                     <input type="radio" name="sex" value="female" id="sex"> انثى 
+                </div>
+              </div>  
+              <label for="college">الكلية</label>
+                <select name="college" id="college" class="form-control" >
+                      <option value="" selected="selected" disabled="disabled">---</option>
+		      <option value="">علوم حاسبات - الجامعة التكنلوجية</option>
+		      <option>هندسة تقنيات حاسبات - كلية دجلة الجامعة</option>
+                      <option>هندسة تقنيات التبريد - كلية دجلة الجامعة</option>
+                      <option>هندسة بناء - كلية دجلة الجامعة</option>
+                      <option>علوم حاسبات - كلية دجلة الجامعة</option>
+                      <option>القانون - كلية دجلة الجامعة</option>
+                      <option>تقنيات البصريات - كلية دجلة الجامعة</option>
+                      <option>العلوم المالية و المصرفية - كلية دجلة الجامعة</option>
+                      <option>الاعلام - كلية دجلة الجامعة</option>
+                      <option>ادارة اعمال - كلية دجلة الجامعة</option>
+                      <option>طب الاسنان - كلية دجلة الجامعة</option>
+                      <option>تحليلات مرضية - كلية دجلة الجامعة</option>
+                      <option>كلية الطب - الجامعة المستنصرية</option>
+                      <option>كلية طب الاسنان - الجامعة المستنصرية</option>
+                      <option>كلية الطب - جامعة النهرين</option>
+                      <option>كلية الطب - جامعة بغداد</option>
+                      <option>كلية طب الاسنان - جامعة بغداد</option>
+                      <option>كلية الصيدلة - جامعة بغداد</option>
+		     <option>ادارة اعمال  - كلية المنصور الجامعة</option>
+		      <option>القانون  - كلية المنصور الجامعة</option>
+		      <option>هندسة اتصالات - كلية المنصور الجامعة</option>
+		      <option>هندسة مدني - كلية المنصور الجامعة</option>
+		      <option>هندسة تقنيات - كلية المنصور الجامعة</option>
+		      <option>هندسة برامجيات - كلية المنصور الجامعة</option>
+		      <option>علوم الحاسبات - كلية المنصور الجامعة</option>
+			 <option>علوم محاسبية ومصرفية - كلية المنصور الجامعة</option>
+
+                </select>
+                <label for="stage">المرحلة</label>
+                    <select name="stage" id="stage" class="form-control" >
+                    <option value="" selected="selected" disabled="disabled">---</option>
+                      <option value="الاولى">الاولى</option>
+                      <option value="الثانية">الثانية</option>
+                      <option value="الثالثة">الثالثة</option>
+                      <option value="الرابعة">الرابعة</option>
+                      <option value="الخامسة">الخامسة</option>
+                      <option value="السادسة">السادسة</option>
+                  </select>
+                  <div id="error" class="error"></div>
+                  
+        </div>
+          </form>
+          <div class="submit text-center">
+            <img src="images/loading.gif" class="loading2">
+          <button style="width: 100px;" onclick="signUpValidation()" id="submit" class="btn-default btn">تسجيل</button>
+
+          </div>
+    </section>
+	
+	
+		
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascript/javascript.js" ></script>
+</body>
+</html>
+
+

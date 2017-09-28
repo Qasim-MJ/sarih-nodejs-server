@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <link rel="stylesheet" type="text/css" href="css/style.css">
+       <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+                  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-58539743-7', 'auto');
+  ga('send', 'pageview');
+</script>
+       <script type="text/javascript"> function logout () {
+         localStorage.removeItem('token');
+         localStorage.removeItem('email');
+         window.location.replace('/')
+       } </script>
+  <title>المصارحات</title>
+</head>
+<body>
+    <div style="width:100%;height:100%;background-image:url('images/body.jpg'); background-size:cover; position: fixed; z-index:-1;"></div>
+    <div class="navbar navbar-default text-center" style="height: 69px; margin: 0px;">
+        <div class="navbar-header navbar-nav">
+              <a href="" class="navbar-brand"><img style="width: 80px;" class="logo" src="images/logowhite.png"></a>         
+        </div>
+      </div>
+    <section  class="container" id="postsContainer">
+        <div style="padding-right: 20px; padding-left: 20px;">
+         <button onclick="showCollege()" class="postbtn1">مصارحات كليتك</button>
+         <button onclick="showStage()" class="postbtn2">مصارحات مرحلتك</button>
+        </div>
+        <div>
+         <div id="fewPosts"></div>
+        <div style="width: 100%; text-align: center; margin-top: -30px;">
+          <button onclick="toAddPost()" class="btn btn-default">أضافة مصارحة <i class="fa fa-plus" aria-hidden="true"></i></button>
+          <button onclick="logout()" class="btn btn-default">تسجيل الخروج <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+        
+          <div class="loading">
+            <img  src="images/loading.gif">
+            <h3 style="margin-top: -20px;">ديحمل .. فدوة لكلبك :)</h3>
+          </div>
+        </div>
+
+        <div id="posts">
+          <div id="collegediv">
+            
+       
+          </div>
+
+
+          <div id="stagediv">
+            
+       
+          </div>
+          <div>
+            <div style="width: 100%; text-align: center;">
+          
+        </div>
+          </div>
+        </div>
+        </div>
+    </section>
+    <section class="container text-center" id="addPostContainer">
+      <p style="font-size: 20px;">اكتب المصارحة اللي تريدها وكول اي شي تجاه اي شخص وكل معلوماتك حتبقى سرية ومحد راح يعرف منو انت. </p>
+      <p style="margin-top: 20px ; color: #ffdb00 ">نص المصارحة :</p>
+      <form id="addPostForm">
+      <textarea id="addposttext"></textarea>
+      <br>
+      <label style=" color: #ffdb00 " for="isGeneral">اضافة المصارحة الى : </label><br><br>
+      <input type="radio" name="isGeneral" value="true"> مصارحات الكلية                    
+      <input style="margin-right: 20px;" type="radio" name="isGeneral" value="false"> مصارحات المرحلة
+      </form>
+      <br>
+      <div id="addPostError"></div>
+      <img src="images/loading.gif" class="loading2">
+      <button style="margin-top: 30px; width: 40% ;" onclick="addPost()" class="btn btn-default">
+          اضافة المصارحة
+          <i style="margin-right: 5px;" class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+      <button style="margin-top: 30px; width: 40% ;" onclick="backToPosts()" class="btn btn-default">
+          رجوع
+          <i style="margin-right: 5px;" class="fa fa-arrow-left" aria-hidden="true"></i>
+      </button>
+      
+    </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascript/javascript.js" ></script>
+<script type="text/javascript">
+  getCollegePosts()
+  getStagePosts()
+</script>
+</body>
+
+</html>
+
+

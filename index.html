@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <link rel="stylesheet" type="text/css" href="css/style.css">
+       <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+           
+       <script type="text/javascript">
+       
+         function login () {
+           $.ajax({
+    url: "/islogedin",
+    headers: {'x-access-token':localStorage.getItem('token'),'email':localStorage.getItem('email')},
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+      window.location.replace(data);
+      
+    },
+    failure: function(errMsg) {
+        alert(errMsg);
+    }
+});
+         }
+         login()
+       </script>
+       
+	<title>صارح</title>
+</head>
+<body style="background-color: white;">
+  
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascript/javascript.js" ></script>
+
+</body>
+</html>
+
+

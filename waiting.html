@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <link rel="stylesheet" type="text/css" href="css/style.css">
+              <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+                   <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-58539743-7', 'auto');
+  ga('send', 'pageview');
+</script>
+  <title>انتظار التفعيل</title>
+</head>
+<body>
+    <div class="navbar navbar-default text-center">
+        <div class="navbar-header navbar-nav">
+              <a href="/" class="navbar-brand"><img class="logo" src="images/logowhite.png"></a>         
+        </div>
+    </div>
+    <section class="container text-center">
+      <p style="margin-top: 50px; font-size: 20px;" >الهوية وصلت النا , راح نتاكد منها ونفعل حسابك قريبا.  </p>
+      <p style="font-size: 20px;"">في حال كانت معلوماتك صحيحة راح تكدر تسوي تسجيل دخول خلال ساعات وتبدي تصارح كليتك او مرحلتك.</p>
+      
+        <div class="formdiv">
+        <p style="font-size: 20px; margin-top: 30px;">او اذا تحب تخلي رقم تلفونك وبس نفعل حسابك حندزلك رسالة.</p>
+          <form id="phoneForm">
+            <label for="phone">رقم الهاتف</label>
+              <input type="tel" name="phone" id="phone" class="form-control">
+            
+              <div class="row">
+                <div id="error" class="error"></div>
+                  
+        </div>
+          </form>
+          <p id="success" style=" color: white; border-radius: 20px;"></p>
+          <div class="submit text-center"><button onclick="phone()" id="submit" class="btn-default btn">ارسال</button></div>
+    </section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascript/javascript.js" ></script>
+</body>
+</html>
+
+

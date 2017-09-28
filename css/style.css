@@ -1,0 +1,232 @@
+body {
+  direction: rtl;
+  font-family: 'Cairo', sans-serif;
+color: white;
+padding-bottom: 50px;
+background-image: url("../images/body.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+label {
+  margin-top: 10px;
+}
+
+select {
+  height: 40px;
+}
+
+.container {
+  max-width: 400px
+}
+
+.navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+
+    }
+
+.navbar-default {
+        height: 69px;
+        border-radius: 0px;
+
+}
+.navbar .navbar-collapse {
+        text-align: center;
+    }
+.logo {
+  width: 80px;
+  margin-top: -25px;
+
+}
+.formdiv {
+  margin: 0 auto ;
+  max-width: 300px;
+  margin-top: 50px
+}
+
+.intro {
+  margin: 0 auto ;
+  max-width: 300px;
+    margin-top: 70px; 
+    font-size: 2.5em ;
+    padding-bottom: 20px;
+
+}
+.btn-default {
+  background-color: transparent;
+  border-color: #ffdb00;
+  color: #ffdb00;
+}
+
+.form-control {
+  background-color: transparent;
+  border-color: #f9f9f9;
+  color: white ;
+  border-radius: 20px;
+}
+.form-control:focus {
+border-color: #FF8C8C;
+}
+
+.error {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0px;
+  background-color: #FF8C8C;
+  border-radius: 20px;
+
+}
+
+.loading2 {
+  width: 60px;
+  display: none;
+  margin: 0 auto;
+}
+.submit {
+    margin: 20px auto ;
+
+}
+
+
+
+/* post Page  */
+
+.navrow {
+  max-width: 400px;
+  margin: 0 auto ;
+}
+
+.postbtn1 {
+  width: 53% ;
+  z-index: 9999;
+  height: 42px;
+  margin-top: 0px;
+  margin-right: -20px;
+  background-color: #FF8C8C;
+  border:none;
+  border-radius: 10px 10px 10px 10px  ;
+}
+
+.postbtn2 {
+  border-radius: 10px 10px 10px 10px  ;
+  float: left;
+  width: 53% ;
+  z-index: 9999;
+  height: 42px;
+  margin-top: 0px;
+  margin-left: -20px;
+  background-color: #FF8C8C;
+  border:none;
+
+}
+
+.sex {
+  font-size: 15px;
+}
+
+.date {
+  color: gray
+}
+
+.collegePost {
+  width: 100%;
+  padding: 10px;
+  background-color: #f7f7f7 ;
+  color: black ;
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 10px;
+
+}
+
+.collegePost p {
+  margin: 0px;
+  padding-bottom: 5px;
+
+}
+
+
+.stagePost {
+  width: 100%;
+  padding: 10px;
+  background-color: #f7f7f7 ;
+  color: black ;
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 10px;
+
+}
+
+.stagePost p {
+  margin: 0px;
+  padding-bottom: 5px;
+
+}
+
+#stagediv {
+  display: none;
+}
+
+#posts {
+  margin-top: 20px;
+}
+
+#fewPosts {
+  color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
+#addPostContainer {
+  display: none;
+  margin-top: 50px;
+}
+
+#addposttext {
+  width: 100% ;
+  border : none;
+  border-radius: 10px;
+  color: black;
+  padding: 10px;
+  height: 100px;
+}
+
+#addPostError {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  background-color: #FF8C8C;
+  border-radius: 20px;
+}
+
+.like_btn {
+  width: 100%;
+  background-color: #f7f7f7;
+  margin: 0px;
+  color: #d3d3d3 ;
+  height: 48px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0px 0px 10px 10px ;
+  border-color: #f0f0f0
+
+}
+
+.like_btn_clicked {
+  color: #FF8C8C ;
+}
+
+.likes {
+  color: #D3D3D3 ; 
+  margin-top: 20px !important ;
+  margin-bottom: -10px !important  ;
+}
+
+@media screen and (min-width: 765px){
+.logo {
+  margin-top: -16px
+}
+
+}
+
