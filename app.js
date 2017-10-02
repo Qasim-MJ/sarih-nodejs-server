@@ -415,7 +415,7 @@ api.get('/stageposts'	, function (req,res) {
   User.findOne({
     email:email.toLowerCase()
   }, function (err,user) {
-    Post.find({college : user.college , isGeneral : 'false' } , function (err,result) {
+    Post.find({college : user.college , stage : user.stage, isGeneral : 'false' } , function (err,result) {
     var posts = []
     for (var i = 0; i < result.length; i++) {
       var isLiked = ""
