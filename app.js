@@ -462,7 +462,7 @@ api.get('/comments', function (req,res) {
   }
       comments = _.sortBy(comments, function(o) { return new moment(o.date).format('YYYYMMDDHHmm'); })
 
-  res.json(comments.reverse())
+  res.json(comments)
 
   })
 
