@@ -282,7 +282,7 @@ app.post('/register' ,function(req,res) {
   else if (!passwordRegEx.test(newUser.password)) {
     res.json({ success: false, message:'يرجى اختيار كلمة مرور اكثر من ٦ احرف'})
   }
-  else if (req.body.name == "" || req.body.email == "" || req.body.password == "" || req.body.birthday == "" || req.body.sex == "" || req.body.college == "" || req.body.stage == "" ) {
+  else if (req.body.name == "" || req.body.email == "" || req.body.password == "" || req.body.sex == "" || req.body.college == "" || req.body.stage == "" ) {
     res.json({ success: false, message:'يرجى ملئ المعلومات بصورة صحيحة'})
   } else {
     User.findOne({
