@@ -76,6 +76,7 @@ var User = mongoose.model('Users', new Schema({
 
 }));
 
+
 var Post = mongoose.model('Posts', new Schema({
 	by: String ,
 	date: String ,
@@ -106,12 +107,13 @@ var Comment = mongoose.model('Comments', new Schema({
 
 }))
 
-var College = mongoose.model('Colleges', new Schema({
-
-	name : String
-
-
+var Report = mongoose.model('Reports', new Schema({
+	by: String ,
+  postID : String,
+	date: String
 }))
+
+
 
 
 
@@ -674,6 +676,7 @@ api.post('/addpost' ,function(req,res) {
       })
 
 
+
 api.post('/addlike' ,function(req,res) {
 
     var email = req.body.email || req.query.email || req.headers['email'];
@@ -852,6 +855,146 @@ app.get('/send' , function (req,res) {
 })();
 
 })
+
+api.post('/addpost' ,function(req,res) {
+
+  var email = req.body.email || req.query.email || req.headers['email'];
+  User.findOne({
+    email:email.toLowerCase()
+  }, function (err,user) {
+
+    var newPost =   new Post({
+
+    by: user.name ,
+    byExpoToken : user.expoToken ,
+    date: moment().utcOffset(+3).format('MMMM Do, h:mm a') ,
+    content : req.body.content ,
+    college: user.college ,
+    stage : user.stage,
+    sex: user.sex,
+    isGeneral : req.body.isGeneral ,
+    likes : 0 ,
+    comments : 0 ,
+    likedBy : [] ,
+
+  })
+
+   if (newPost.content === "") {
+    res.json({success : false , message:'يرجى ادخال نص المصارحة'})
+   }
+   else if (newPost.content.length < 10) {
+     res.json({success : false , message:'يرجى كتابة مصارحة اكثر من ١٠ احرف '})
+   }
+  else if (newPost.isGeneral === "") {
+    res.json({success : false , message:'يرجى اختيار مكان اضافة المصارحة'})
+  }
+    else {
+       newPost.save(function (err) {
+         if (err) throw err
+         res.json({success : true , message:'تم اضافة المصارحة'})
+        })
+
+                 if (newPost.isGeneral === 'true') {
+                   User.find({ college : user.college}, function (err,users) {
+
+                           let usersExpoTokens = []
+                           let messages = []
+                           for (var i = 0; i < users.length; i++) {
+                             var pushToken = users[i].expoToken
+                             if (!Expo.isExpoPushToken(pushToken)) {
+                            //  console.error(`Push token ${pushToken} is not a valid Expo push token`);
+                               continue;
+                             }
+
+                               messages.push({
+                                 to: pushToken,
+                                 priority: 'high',
+                                 sound: 'default',
+                                 body: 'مصارحة جديدة في مصارحات الكلية',
+                                 data: { withSome: 'data' },
+                               })
+                           }
+
+
+                           let chunks = expo.chunkPushNotifications(messages);
+
+                         (async () => {
+
+                           for (let chunk of chunks) {
+                             try {
+                               let receipts = await expo.sendPushNotificationsAsync(chunk);
+                               console.log(receipts);
+                             } catch (error) {
+                               console.error(error);
+                             }
+                           }
+                         })();
+                      })
+                 } else {
+                   User.find({ college : user.college , stage : user.stage }, function (err,users) {
+
+                           let usersExpoTokens = []
+                           let messages = []
+                           for (var i = 0; i < users.length; i++) {
+                             var pushToken = users[i].expoToken
+                             if (!Expo.isExpoPushToken(pushToken)) {
+                            //  console.error(`Push token ${pushToken} is not a valid Expo push token`);
+                               continue;
+                             }
+
+                               messages.push({
+                                 to: pushToken,
+                                 priority: 'high',
+                                 sound: 'default',
+                                 body: 'مصارحة جديدة في مصارحات المرحلة',
+                                 data: { withSome: 'data' },
+                               })
+                           }
+
+
+                           let chunks = expo.chunkPushNotifications(messages);
+
+                         (async () => {
+
+                           for (let chunk of chunks) {
+                             try {
+                               let receipts = await expo.sendPushNotificationsAsync(chunk);
+                               console.log(receipts);
+                             } catch (error) {
+                               console.error(error);
+                             }
+                           }
+                         })();
+                      })
+                 }
+    }
+
+
+  })
+
+   })
+
+   api.post('/addReport' ,function(req,res) {
+
+     var email = req.body.email || req.query.email || req.headers['email'];
+     var postID = req.body.id
+
+     var newReport =   new Report({
+
+     by: email ,
+     postID : postID,
+     date: moment().utcOffset(+3).format('MMMM Do, h:mm a')
+
+
+   })
+
+   newReport.save(function (err) {
+     if (err) throw err
+     res.json({success : true , message:'شكرا لك , سنقوم بمراجعة التبليغ لاتخاذ اللازم'})
+    })
+
+      })
+
 
 app.get('/updatelikes' , function (req,res) {
   // Post.update( {}, {comments : 0 }, {multi:true , strict : false}, function(err ,response ){
