@@ -7,6 +7,7 @@ var bodyParser  = require('body-parser');
 var jwt    = require('jsonwebtoken');
 var bcrypt = require('bcrypt'); var salt = 10 ;
 var moment = require('moment');
+var _ = require('lodash');
 var port = process.env.PORT || 5000 ;
 const fileUpload = require('express-fileupload');
 
@@ -459,6 +460,8 @@ api.get('/comments', function (req,res) {
       }
       comments.push({"id" : result[i]._id,'content' : result[i].content , "sex" : result[i].sex , "date" : result[i].date , "likes" : result[i].likes , "isLiked" : isLiked , "color" : color})
   }
+      comments = _.sortBy(comments, function(o) { return new moment(o.date).format('YYYYMMDDHHmm'); })
+
   res.json(comments)
 
   })
