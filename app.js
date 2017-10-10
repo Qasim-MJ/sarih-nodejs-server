@@ -407,7 +407,9 @@ api.get('/collegeposts', function (req,res) {
       posts.push({"id" : result[i]._id ,'content' : result[i].content , "sex" : result[i].sex , "date" : result[i].date , "likes" : result[i].likes , "isLiked" : isLiked , "color" : color , "comments" : result[i].comments  })
 
     }
-    res.json(posts.reverse())
+    posts = _.sortBy(comments, function(o) { return new moment(o.date).format('YYYYMMDDHHmm'); })
+
+res.json(posts)
   })
 
 	})
@@ -433,7 +435,9 @@ api.get('/stageposts'	, function (req,res) {
       posts.push({"id" : result[i]._id ,'content' : result[i].content , "sex" : result[i].sex , "date" : result[i].date , "likes" : result[i].likes , "isLiked" : isLiked , "color" : color , "comments" : result[i].comments  })
 
     }
-    res.json(posts.reverse())
+    posts = _.sortBy(comments, function(o) { return new moment(o.date).format('YYYYMMDDHHmm'); })
+
+res.json(posts)
   })
 
   })
@@ -999,16 +1003,18 @@ api.post('/addpost' ,function(req,res) {
       })
 
 
-app.get('/updatelikes' , function (req,res) {
-  // Post.update( {}, {comments : 0 }, {multi:true , strict : false}, function(err ,response ){
-      res.send("sucess")
-      //  });
-})
+// app.get('/updatelikes' , function (req,res) {
+//   Post.update( {stage : 'الرابعة'}, {stage : 'الخامسة' }, {multi:true , strict : false}, function(err ,response ){
+//       res.send("sucess")
+//         });
+// })
 
 // app.get('/delete' , function (req,res) {
-//    Post.find({college : 'كلية'}).remove(()=>{res.send("sucess")} )
+//    Post.find({stage : 'الثالثة' , isGeneral : 'false'}).remove(()=>{res.send("sucess")} )
 //
 // })
+
+
 //=============== /Posts =================
 
 app.get('*',function (req,res) {
