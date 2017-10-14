@@ -397,6 +397,8 @@ api.get('/collegeposts', function (req,res) {
     for (var i = 0; i < result.length; i++) {
       var isLiked = ""
       var color = ""
+      var date = new Date()
+          date = moment(result[i].date, 'MMMM Do, h:mm a');
       if (result[i].likedBy.includes(user.name)) {
         isLiked = "like_btn_clicked"
         color = "#e67375"
@@ -404,12 +406,25 @@ api.get('/collegeposts', function (req,res) {
         isLiked = ""
         color = "gray"
       }
-      posts.push({"id" : result[i]._id ,'content' : result[i].content , "sex" : result[i].sex , "date" : result[i].date , "likes" : result[i].likes , "isLiked" : isLiked , "color" : color , "comments" : result[i].comments  })
+      posts.push({"id" : result[i]._id ,'content' : result[i].content , "sex" : result[i].sex , "date" : date , "likes" : result[i].likes , "isLiked" : isLiked , "color" : color , "comments" : result[i].comments  })
 
     }
-    posts = _.sortBy(comments, function(o) { return new moment(o.date).format('YYYYMMDDHHmm'); })
+    var array = [
+      moment(),
+      moment().add(1, 'd'),
+      moment().subtract(1, 'd')
+  ];
 
-res.json(posts)
+posts.sort(function (a, b) {
+    return a.date - b.date;
+});
+
+
+posts.map(function (m) {
+    m.date = m.date.format('YYYY-MM-DD, h:mm a')
+})
+
+res.json(posts.reverse())
   })
 
 	})
@@ -423,6 +438,8 @@ api.get('/stageposts'	, function (req,res) {
     Post.find({college : user.college , stage : user.stage, isGeneral : 'false' } , function (err,result) {
     var posts = []
     for (var i = 0; i < result.length; i++) {
+      var date = new Date()
+          date = moment(result[i].date, 'MMMM Do, h:mm a');
       var isLiked = ""
       var color = ""
       if (result[i].likedBy.includes(user.name)) {
@@ -432,12 +449,24 @@ api.get('/stageposts'	, function (req,res) {
         isLiked = ""
         color = "gray"
       }
-      posts.push({"id" : result[i]._id ,'content' : result[i].content , "sex" : result[i].sex , "date" : result[i].date , "likes" : result[i].likes , "isLiked" : isLiked , "color" : color , "comments" : result[i].comments  })
+      posts.push({"id" : result[i]._id ,'content' : result[i].content , "sex" : result[i].sex , "date" : date , "likes" : result[i].likes , "isLiked" : isLiked , "color" : color , "comments" : result[i].comments  })
 
     }
-    posts = _.sortBy(comments, function(o) { return new moment(o.date).format('YYYYMMDDHHmm'); })
+    var array = [
+      moment(),
+      moment().add(1, 'd'),
+      moment().subtract(1, 'd')
+    ];
 
-res.json(posts)
+    posts.sort(function (a, b) {
+    return a.date - b.date;
+    });
+
+    posts.map(function (m) {
+        m.date = m.date.format('YYYY-MM-DD, h:mm a')
+    })
+
+res.json(posts.reverse())
   })
 
   })
@@ -453,6 +482,8 @@ api.get('/comments', function (req,res) {
     Comment.find({postID : postID} , function (err,result) {
     var comments = []
     for (var i = 0; i < result.length; i++) {
+      var date = new Date()
+          date = moment(result[i].date, 'MMMM Do, h:mm a');
       var isLiked = ""
       var color = ""
       if (result[i].likedBy.includes(user.name)) {
@@ -462,9 +493,22 @@ api.get('/comments', function (req,res) {
         isLiked = ""
         color = "gray"
       }
-      comments.push({"id" : result[i]._id,'content' : result[i].content , "sex" : result[i].sex , "date" : result[i].date , "likes" : result[i].likes , "isLiked" : isLiked , "color" : color})
+      comments.push({"id" : result[i]._id,'content' : result[i].content , "sex" : result[i].sex , "date" : date, "likes" : result[i].likes , "isLiked" : isLiked , "color" : color})
   }
-      comments = _.sortBy(comments, function(o) { return new moment(o.date).format('YYYYMMDDHHmm'); })
+
+  var array = [
+    moment(),
+    moment().add(1, 'd'),
+    moment().subtract(1, 'd')
+  ];
+
+  comments.sort(function (a, b) {
+  return a.date - b.date;
+  });
+
+  comments.map(function (m) {
+      m.date = m.date.format('YYYY-MM-DD, h:mm a')
+  })
 
   res.json(comments)
 
