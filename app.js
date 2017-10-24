@@ -388,6 +388,50 @@ app.get('/myadminposts', function (req,res) {
 
 //=============== Posts =================
 
+api.get('/generalposts', function (req,res) {
+  var email = req.body.email || req.query.email || req.headers['email'];
+  User.findOne({
+    email:email.toLowerCase()
+  }, function (err,user) {
+    Post.find({ college : 'المجموعة العامة ١' , isGeneral : 'true' } , function (err,result) {
+    var posts = []
+    for (var i = 0; i < result.length; i++) {
+      var isLiked = ""
+      var color = ""
+      var date = new Date()
+          date = moment(result[i].date, 'MMMM Do, h:mm a');
+      if (result[i].likedBy.includes(user.name)) {
+        isLiked = "like_btn_clicked"
+        color = "#e67375"
+      } else {
+        isLiked = ""
+        color = "gray"
+      }
+      posts.push({"id" : result[i]._id ,'content' : result[i].content , "sex" : result[i].sex , "date" : date , "likes" : result[i].likes , "isLiked" : isLiked , "color" : color , "comments" : result[i].comments  })
+
+    }
+    var array = [
+      moment(),
+      moment().add(1, 'd'),
+      moment().subtract(1, 'd')
+  ];
+
+posts.sort(function (a, b) {
+    return a.date - b.date;
+});
+
+
+posts.map(function (m) {
+    m.date = m.date.format('YYYY-MM-DD, h:mm a')
+})
+
+res.json(posts.reverse())
+  })
+
+	})
+
+})
+
 api.get('/collegeposts', function (req,res) {
   var email = req.body.email || req.query.email || req.headers['email'];
   User.findOne({
