@@ -682,6 +682,52 @@ api.post('/addpost' ,function(req,res) {
 
    })
 
+   api.post('/addgeneralpost' ,function(req,res) {
+
+     var email = req.body.email || req.query.email || req.headers['email'];
+     User.findOne({
+       email:email.toLowerCase()
+     }, function (err,user) {
+
+       var newPost =   new Post({
+
+       by: user.name ,
+       byExpoToken : user.expoToken ,
+       date: moment().utcOffset(+3).format('MMMM Do, h:mm a') ,
+       content : req.body.content ,
+       college: 'المجموعة العامة ١' ,
+       stage : user.stage,
+       sex: user.sex,
+       isGeneral : "true" ,
+       likes : 0 ,
+       comments : 0 ,
+       likedBy : [] ,
+
+     })
+
+      if (newPost.content === "") {
+       res.json({success : false , message:'يرجى ادخال نص المصارحة'})
+      }
+      else if (newPost.content.length < 10) {
+        res.json({success : false , message:'يرجى كتابة مصارحة اكثر من ١٠ احرف '})
+      }
+     else if (newPost.isGeneral === "") {
+       res.json({success : false , message:'يرجى اختيار مكان اضافة المصارحة'})
+     }
+       else {
+          newPost.save(function (err) {
+            if (err) throw err
+            res.json({success : true , message:'تم اضافة المصارحة'})
+           })
+
+       }
+
+
+     })
+
+      })
+
+
    api.post('/addComment' ,function(req,res) {
 
      var email = req.body.email || req.query.email || req.headers['email'];
