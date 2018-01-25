@@ -8,7 +8,7 @@ var jwt    = require('jsonwebtoken');
 var bcrypt = require('bcrypt'); var salt = 10 ;
 var moment = require('moment');
 var _ = require('lodash');
-var port = process.env.PORT || 5000 ;
+
 const fileUpload = require('express-fileupload');
 
 var Expo = require('expo-server-sdk');
@@ -1158,6 +1158,6 @@ app.get('*',function (req,res) {
 
 
 })
-app.listen(port, ()=>{
-	console.log('server is listening on port 5000')
+app.listen(9000, ()=>{
+	console.log('server is listening on port 9000')
 }) ;
